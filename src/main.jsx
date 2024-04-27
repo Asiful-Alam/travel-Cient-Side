@@ -1,24 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ErrorPage from './Pages/ErrorPage.jsx';
+import Root from './layout/Root.jsx';
+import AddTouristsSpot from './Pages/AddTouristsSpot.jsx';
+import Home from './Home.jsx'; 
 import './index.css'
-
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import Home from './Home.jsx';
-
-
+import BookingForm from './Pages/BookingForm.jsx';
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home></Home>,
+    path: '/',
+    element: <Root />,
+    
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+        loader: () => fetch('http://localhost:5000/location').then(res => res.json()), 
+      },
+      {
+        path: '/location',
+        element: <AddTouristsSpot />,
+      },
+      {
+      path:'/booking',
+      element:<BookingForm></BookingForm>,
+      },
+    ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
