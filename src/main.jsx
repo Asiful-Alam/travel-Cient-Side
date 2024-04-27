@@ -4,35 +4,35 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './Pages/ErrorPage.jsx';
 import Root from './layout/Root.jsx';
 import AddTouristsSpot from './Pages/AddTouristsSpot.jsx';
-import Home from './Home.jsx'; 
+import Home from './Home.jsx';
 import './index.css'
 import BookingForm from './Pages/BookingForm.jsx';
 import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
+import TouristSpot from './Pages/TouristSpot.jsx';
+import MyList from './Pages/MyList.jsx';
+import Details from './Pages/Details.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
-    
     errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/location').then(res => res.json()), 
-        
+        loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
       },
       {
         path: '/location',
-        element: <PrivateRoute>
-          <AddTouristsSpot />
-        </PrivateRoute>,
+        element: <PrivateRoute><AddTouristsSpot /></PrivateRoute>,
       },
       {
-      path:'/booking',
-      element:<BookingForm></BookingForm>,
+        path:'/booking',
+        element:<BookingForm></BookingForm>,
       },
       {
         path: '/login',
@@ -41,15 +41,30 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
-      }
+      },
+      {
+        path: '/spot',
+        element: <TouristSpot></TouristSpot>,
+        loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
+      },
+      {
+        path: '/mylist',
+        element:<MyList></MyList>,
+      },
+      {
+        path: '/details',
+        element:<Details></Details>,
+      },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const App = () => (
   <React.StrictMode>
-  <AuthProvider>
-  <RouterProvider router={router} />
-  </AuthProvider>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);

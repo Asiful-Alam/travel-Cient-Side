@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import Swal from 'sweetalert2'
-import NavBar from '../component/NavBar';
+
 
 const AddTouristsSpot = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const AddTouristsSpot = () => {
     total_visitors_per_year: '',
     user_email: '',
     user_name: '',
+   
   });
 
   const handleChange = (e) => {
@@ -24,7 +25,6 @@ const AddTouristsSpot = () => {
       [name]: value,
     });
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -43,7 +43,7 @@ const AddTouristsSpot = () => {
       user_email: form.user_email.value,
       user_name: form.user_name.value,
     };
-
+    
     console.log(AddformData);
 
     // send data to the server
@@ -72,7 +72,7 @@ const AddTouristsSpot = () => {
 
   return (
     <div>
-      <NavBar></NavBar>
+     
       <div className="max-w-md mx-auto mt-8 ">
       
       <div className=' '>

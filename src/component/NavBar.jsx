@@ -35,7 +35,7 @@ const NavBar = () => {
       <li>
         <NavLink
           activeClassName="border-2 bg-transparent text-yellow-500 border-yellow-500"
-          to="/user"
+          to="/spot"
         >
           Tourists Spot
         </NavLink>
@@ -43,7 +43,7 @@ const NavBar = () => {
       <li>
         <NavLink
           activeClassName="border-2 bg-transparent text-yellow-500 border-t-orange-500"
-          to="/blog"
+          to="/mylist"
         >
          My List
         </NavLink>
@@ -77,7 +77,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar my-8 z-10 relative">
-      <p className="text-2xl font-bold">AshTek</p>
+      <p className="text-2xl font-bold">Asif Travel</p>
       <div className="navbar-start">
         <div className="dropdown">
           <div

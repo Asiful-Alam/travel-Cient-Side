@@ -1,11 +1,13 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
+const Details = () => {
+  const location = useLocation().state.location;
 
-const LocationCard = ({ location }) => {
   return (
     <div>
-      <div className="flex flex-wrap justify-center">
-        <div className="w-full p-4">
+      <h2>{location.tourists_spot_name}</h2>
+      <div className="w-full p-4">
           <div className="card bg-white shadow-lg rounded-lg overflow-hidden">
             <img
               src={location.image}
@@ -42,14 +44,8 @@ const LocationCard = ({ location }) => {
             </div>
           </div>
         </div>
-        <Link to={{ pathname: '/details', state: { location } }}>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-            View Details
-          </button>
-        </Link>
-      </div>
     </div>
   );
 };
 
-export default LocationCard;
+export default Details;
