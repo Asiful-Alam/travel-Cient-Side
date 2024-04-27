@@ -7,6 +7,7 @@ import AddTouristsSpot from './Pages/AddTouristsSpot.jsx';
 import Home from './Home.jsx'; 
 import './index.css'
 import BookingForm from './Pages/BookingForm.jsx';
+import Login from './Pages/Login.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
         loader: () => fetch('http://localhost:5000/location').then(res => res.json()), 
+        
       },
       {
         path: '/location',
@@ -27,6 +29,10 @@ const router = createBrowserRouter([
       path:'/booking',
       element:<BookingForm></BookingForm>,
       },
+      {
+        path: '/login',
+        element: <Login></Login>
+      }
     ],
   },
 ]);

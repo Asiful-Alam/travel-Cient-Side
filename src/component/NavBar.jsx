@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const location = useLocation();
@@ -101,6 +101,7 @@ const NavBar = () => {
   return (
     <div className="navbar my-8">
       <div className="navbar-start">
+        <h1 className="font-bold text-3xl">Asif<span className="text-red-500"> Travel</span></h1>
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -127,10 +128,10 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal text-base font-semibold gap-2 px-4">{links}</ul>
       </div>
-      <div className="navbar-end space-x-4">
-        <a className="btn text-white bg-green-500">Sign In</a>
-        <a className="btn text-white bg-purple-500">Sign Up</a>
-      </div>
+      <Link to="/login" className="navbar-end space-x-4">
+
+        <button className="btn text-white bg-purple-500">Login</button>
+      </Link>
     </div>
   );
 };
