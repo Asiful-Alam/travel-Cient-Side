@@ -8,6 +8,9 @@ import Home from './Home.jsx';
 import './index.css'
 import BookingForm from './Pages/BookingForm.jsx';
 import Login from './Pages/Login.jsx';
+import Register from './Pages/Register.jsx';
+import AuthProvider from './provider/AuthProvider.jsx';
+import PrivateRoute from './Route/PrivateRoute.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -23,7 +26,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/location',
-        element: <AddTouristsSpot />,
+        element: <PrivateRoute>
+          <AddTouristsSpot />
+        </PrivateRoute>,
       },
       {
       path:'/booking',
@@ -32,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>,
       }
     ],
   },
@@ -39,6 +48,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+  <AuthProvider>
+  <RouterProvider router={router} />
+  </AuthProvider>
   </React.StrictMode>
 );

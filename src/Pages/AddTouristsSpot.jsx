@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import Swal from 'sweetalert2'
+import NavBar from '../component/NavBar';
 
 const AddTouristsSpot = () => {
   const [formData, setFormData] = useState({
@@ -70,8 +71,10 @@ const AddTouristsSpot = () => {
   
 
   return (
-    <div className="max-w-md mx-auto mt-8 ">
-      <div></div>
+    <div>
+      <NavBar></NavBar>
+      <div className="max-w-md mx-auto mt-8 ">
+      
       <div className=' '>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -121,6 +124,7 @@ const AddTouristsSpot = () => {
           <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add</button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
