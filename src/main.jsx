@@ -11,9 +11,13 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
-import TouristSpot from './Pages/TouristSpot.jsx';
+import TouristSpot from './Pages/TouristsSpot.jsx';
 import MyList from './Pages/MyList.jsx';
 import Details from './Pages/Details.jsx';
+import BookingSystem from './Pages/BookingSystem.jsx';
+import TouristsSpot from './Pages/TouristsSpot.jsx';
+import Update from './Pages/Update.jsx';
+import CountryDetails from './Pages/CountryDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/spot',
-        element: <TouristSpot></TouristSpot>,
+        element: <TouristsSpot></TouristsSpot>,
         loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
       },
       {
@@ -52,8 +56,26 @@ const router = createBrowserRouter([
         element:<MyList></MyList>,
       },
       {
-        path: '/details',
-        element:<Details></Details>,
+        path: '/details/:_id',
+        element: <Details />,
+        
+      },
+      {
+        path: '/countrydetails',
+        element:<CountryDetails></CountryDetails>,
+        
+      },
+      {
+        path: '/bookingsystem',
+        element: <PrivateRoute>
+          <BookingSystem></BookingSystem>
+        </PrivateRoute>,
+      },
+      {
+        path: '/update',
+        element: <PrivateRoute>
+          <Update></Update>
+        </PrivateRoute>,
       },
     ],
   },

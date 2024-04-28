@@ -1,18 +1,33 @@
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const TouristSpot = () => {
+  const [countries, setCountries] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/countries')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setCountries(data);
+      })
+      .catch(error => {
+        console.error('Error fetching countries:', error);
+      });
+  }, []); // Empty dependency array to ensure the effect runs only once
+
   return (
-    <div className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-      <div className="px-4 py-2">
-        <h1 className="text-xl font-bold text-gray-800 uppercase dark:text-white">NIKE AIR</h1>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi quos quidem sequi illum facere recusandae voluptatibus</p>
-      </div>
-
-      <img className="object-cover w-full h-48 mt-2" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=320&q=80" alt="NIKE AIR" />
-
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-900">
-        <h1 className="text-lg font-bold text-white">$129</h1>
-        <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">View details</button>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {countries.map(country => (
+        <div key={country._id.$oid} className="bg-white p-4 rounded-md shadow-md">
+          <img src={country.image_url} alt={country.country_name} className="w-full h-40 object-cover mb-4 rounded-md" />
+          <h3 className="text-lg font-semibold mb-2">{country.country_name}</h3>
+          <p className="text-gray-600 mb-4">{country.details}</p>
+         <Link to='/countrydetails'>
+         <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">View Details</button>
+         </Link>
+        </div>
+      ))}
     </div>
   );
 };

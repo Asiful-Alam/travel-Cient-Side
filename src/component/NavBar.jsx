@@ -51,19 +51,12 @@ const NavBar = () => {
       <li>
         <NavLink
           activeClassName="border-2 bg-transparent text-yellow-500 border-t-orange-500"
-          to="/blog"
+          to="/bookingsystem"
         >
          Bookings
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          activeClassName="border-2 bg-transparent text-yellow-500 border-t-orange-500"
-          to="/blog"
-        >
-        About Us
-        </NavLink>
-      </li>
+     
       <li>
         <NavLink
           activeClassName="border-2 bg-transparent text-yellow-500 border-green-500"
@@ -142,9 +135,3 @@ const NavBar = () => {
 
 export default NavBar;
 
-
-// Tourists Spot
-// Add Tourist Spot
-// My List
-// Bookings
-// About us
