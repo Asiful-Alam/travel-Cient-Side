@@ -9,9 +9,9 @@ const AddTouristsSpot = () => {
   const { user } = useContext(AuthContext);
   const notify = () => toast("Wow so easy!");
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.target;
+  const handleSubmit = event => {
+    event.preventDefault();
+    const form = event.target;
     const name = user?.displayName;
     const email = user?.email;
   
@@ -38,6 +38,7 @@ const AddTouristsSpot = () => {
       travel_time,
       total_visitors_per_year,
     };
+    console.log(AddformData);
   
     fetch("http://localhost:5000/location", {
       method: "POST",
@@ -56,7 +57,6 @@ const AddTouristsSpot = () => {
         }
       });
   };
-  
   return (
     <div>
       <NavBar />

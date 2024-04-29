@@ -50,16 +50,21 @@ const router = createBrowserRouter([
       },
       {
         path: '/spot',
-        element: <TouristsSpot></TouristsSpot>,
+        element: 
+          <TouristsSpot></TouristsSpot>,
         loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
       },
       {
         path: '/mylist',
-        element:<MyList></MyList>,
+        element:<PrivateRoute>
+          <MyList></MyList>
+        </PrivateRoute>,
       },
       {
         path: '/details/:_id',
-        element: <Details />,
+        element: <PrivateRoute>
+          <Details />
+        </PrivateRoute>,
         
       },
       {

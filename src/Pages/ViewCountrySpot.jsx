@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import NavBar from '../component/NavBar';
 
 const ViewCountrySpot = () => {
     const { country_name } = useParams();
@@ -31,22 +32,25 @@ const ViewCountrySpot = () => {
     }
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            {countryDetails ? (
-                <div className="bg-white rounded-lg overflow-hidden shadow-md w-[500px]">
-                    <img src={countryDetails.image} alt={countryDetails.country_name} className="w-full h-48 object-cover object-center" />
-                    <div className="p-6">
-                        <h2 className="text-2xl font-semibold mb-4">{countryDetails.country_name}</h2>
-                        <p className="text-gray-600 mb-2"><span className="font-semibold">Tourist Spot:</span> {countryDetails.tourists_spot_name}</p>
-                        <p className="text-gray-600 mb-4"><span className="font-semibold">Short Description:</span> {countryDetails.short_description}</p>
-                        <p className="text-gray-600 mb-4"><span className="font-semibold">Average Cost:</span> {countryDetails.average_cost}</p>
-                        <p className="text-gray-600 mb-4"><span className="font-semibold">seaspnality:</span> {countryDetails.seasonality}</p>
-                    </div>
-                </div>
-            ) : (
-                <p>No data available</p>
-            )}
-        </div>
+       <div>
+        <NavBar></NavBar>
+         <div className="min-h-screen bg-gray-100">
+          
+          <div className="container mx-auto px-4 py-8 flex justify-center">
+              <div className="max-w-lg bg-white shadow-md rounded-lg overflow-hidden">
+                  <img src={countryDetails.image} alt={countryDetails.country_name} className="w-full h-64 object-cover object-center" />
+                  <div className="p-6">
+                      <h2 className="text-3xl font-semibold mb-2">{countryDetails.country_name}</h2>
+                      <p className="text-gray-600 mb-4"><span className="font-semibold">Tourist Spot:</span> {countryDetails.tourists_spot_name}</p>
+                      <p className="text-gray-600 mb-4"><span className="font-semibold">Location:</span> {countryDetails.location}</p>
+                      <p className="text-gray-600 mb-4"><span className="font-semibold">Short Description:</span> {countryDetails.short_description}</p>
+                      <p className="text-gray-600 mb-4"><span className="font-semibold">Average Cost:</span> {countryDetails.average_cost}</p>
+                      <p className="text-gray-600 mb-4"><span className="font-semibold">Seasonality:</span> {countryDetails.seasonality}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+       </div>
     );
 };
 
