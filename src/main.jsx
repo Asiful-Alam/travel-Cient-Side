@@ -72,10 +72,11 @@ const router = createBrowserRouter([
         </PrivateRoute>,
       },
       {
-        path: '/update',
+        path: '/update/:id',
         element: <PrivateRoute>
           <Update></Update>
         </PrivateRoute>,
+        loader: (params) => fetch(`http://localhost:5000/location/${params.id}`)
       },
     ],
   },
