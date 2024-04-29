@@ -98,7 +98,7 @@ const Details = () => {
         </div>
         <div>
           <div className="join join-horizontal lg:join-vertical gap-6 mr-6">
-            <Link to={'/update/${_id}'}>
+            <Link to='/update'>
             <button className="btn join-item">update</button>
             </Link >
             <button onClick={() => handleDelete(_id)} className="btn join-item">
