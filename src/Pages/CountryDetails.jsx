@@ -1,42 +1,52 @@
-import  { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const CountryDetails = () => {
-  const [bd, setCountries] = useState([]);
+  const { country_name } = useParams();
+  const [countryDetails, setCountryDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/bd')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        setCountries(data);
-      })
-      .catch(error => {
-        console.error('Error fetching countries:', error);
-      });
-  }, []);
+    const fetchCountryDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/bd/${country_name}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch country details');
+        }
+        const data = await response.json();
+        console.log("Fetched country details:", data); 
+        setCountryDetails(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching country details:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchCountryDetails();
+  }, [country_name]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {bd.map(bd => (
-          <div key={bd._id.$oid} className="bg-white rounded-lg overflow-hidden shadow-md">
-            <img src={bd.image} alt={bd.country_name} className="w-full h-48 object-cover object-center" />
-            <div className="p-6">
-              <h2 className="text-2xl font-semibold mb-4">{bd.country_Name}</h2>
-              <p className="text-gray-600 mb-2"><span className="font-semibold">Tourist Spot:</span> {bd.tourists_spot_name}</p>
-              <p className="text-gray-600 mb-2"><span className="font-semibold">Location:</span> {bd.location}</p>
-              <p className="text-gray-600 mb-2"><span className="font-semibold">Short Description:</span> {bd.short_description}</p>
-              <p className="text-gray-600 mb-2"><span className="font-semibold">Average Cost:</span> {bd.average_cost}</p>
-              <p className="text-gray-600 mb-2"><span className="font-semibold">Seasonality:</span> {bd.seasonality}</p>
-              <Link to={`/bd/${bd._id.$oid}`}>
-                <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
-                  View Details
-                </button>
-              </Link>
-            </div>
+    <div className="container mx-auto w-[500px] px-4 py-8">
+      {countryDetails ? (
+        <div className="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src={countryDetails.image} alt={countryDetails.country_name} className="w-full h-48 object-cover object-center" />
+          <div className="p-6">
+            <h2 className="text-2xl font-semibold mb-4">{countryDetails.country_name}</h2>
+            <p className="text-gray-600 mb-2"><span className="font-semibold">Tourist Spot:</span> {countryDetails.tourists_spot_name}</p>
+            <p className="text-gray-600 mb-4"><span className="font-semibold">Short Description:</span> {countryDetails.short_description}</p>
+           <Link to={`/viewcountryspot/${countryDetails.country_name}`}>
+           <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">See More</button>
+           </Link>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <p>No data available</p>
+      )}
     </div>
   );
 };

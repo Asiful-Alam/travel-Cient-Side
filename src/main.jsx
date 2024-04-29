@@ -1,4 +1,5 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ErrorPage from './Pages/ErrorPage.jsx';
@@ -11,13 +12,14 @@ import Login from './Pages/Login.jsx';
 import Register from './Pages/Register.jsx';
 import AuthProvider from './provider/AuthProvider.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
-import TouristSpot from './Pages/TouristsSpot.jsx';
+
 import MyList from './Pages/MyList.jsx';
 import Details from './Pages/Details.jsx';
 import BookingSystem from './Pages/BookingSystem.jsx';
 import TouristsSpot from './Pages/TouristsSpot.jsx';
 import Update from './Pages/Update.jsx';
 import CountryDetails from './Pages/CountryDetails.jsx';
+import ViewCountrySpot from './Pages/ViewCountrySpot.jsx';
 
 const router = createBrowserRouter([
   {
@@ -61,8 +63,13 @@ const router = createBrowserRouter([
         
       },
       {
-        path: '/countrydetails',
+        path: '/countrydetails/:country_name',
         element:<CountryDetails></CountryDetails>,
+        
+      },
+      {
+        path: '/viewcountryspot/:country_name',
+        element:<ViewCountrySpot></ViewCountrySpot>,
         
       },
       {
