@@ -1,23 +1,96 @@
+import  { useContext } from "react";
 import NavBar from "../component/NavBar";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
+import { Link, useLoaderData } from "react-router-dom";
+
 
 const Update = () => {
+  const { user } = useContext(AuthContext);
+  const loadedLocation= useLoaderData();
+  const {_id, email}=loadedLocation;
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = user?.displayName;
+    const email = user?.email;
+
+    const tourists_spot_name = form.tourists_spot_name.value;
+    const country_name = form.country_name.value;
+    const location = form.location.value;
+    const short_description = form.short_description.value;
+    const average_cost = form.average_cost.value;
+    const seasonality = form.seasonality.value;
+    const travel_time = form.travel_time.value;
+    const total_visitors_per_year = form.total_visitors_per_year.value;
+
+    const updateItem = {
+      name,
+      email,
+      tourists_spot_name,
+      country_name,
+      location,
+      short_description,
+      average_cost,
+      seasonality,
+      travel_time,
+      total_visitors_per_year,
+    };
+
+    console.log(updateItem);
+    fetch(`http://localhost:5000/location/${email}/${_id}`,{
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(updateItem)
+    })
+    .then(res=>res.json())
+        .then(data=>{
+            console.log(data);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Updated Successfully',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+        })
+  };
+
   return (
     <div>
       <NavBar />
       <div className="max-w-md mx-auto mt-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-8 rounded-lg">
         <div className="bg-white shadow-md rounded px-8 py-6">
-          <h2 className="text-2xl font-semibold mb-4 text-center">Update Tourist Spot</h2>
-          <form className="space-y-4">
-            {/* Display user email and name */}
+          <h2 className="text-2xl font-semibold mb-4 text-center">
+            Update Tourist Spot
+          </h2>
+          <form className="space-y-4" onSubmit={handleUpdate}>
             <div>
-              <label htmlFor="user_email" className="block mb-1">User Email:</label>
-              <input type="email" id="user_email" name="user_email" readOnly className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
+              <label htmlFor="user_email" className="block mb-1">
+                User Email:
+              </label>
+              <input
+                type="email"
+                id="user_email"
+                name="user_email"
+                value={user?.email || ""}
+                readOnly
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+              />
             </div>
             <div>
-              <label htmlFor="user_name" className="block mb-1">User Name:</label>
-              <input type="text" id="user_name" name="user_name" readOnly className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
+              <label htmlFor="user_name" className="block mb-1">
+                User Name:
+              </label>
+              <input
+                type="text"
+                id="user_name"
+                name="user_name"
+                value={user?.displayName || ""}
+                readOnly
+                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+              />
             </div>
-            {/* Additional form fields */}
             <div>
               <label htmlFor="tourists_spot_name" className="block mb-1">Tourists Spot Name:</label>
               <input type="text" id="tourists_spot_name" name="tourists_spot_name" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
@@ -51,9 +124,12 @@ const Update = () => {
               <input type="text" id="total_visitors_per_year" name="total_visitors_per_year" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
             </div>
             {/* Submit button */}
-            <div>
-              <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none">Update</button>
-            </div>
+            
+           <Link to={`/update/${location._id}`}>
+           <button className="btn  btn-primary">
+            update
+           </button>
+           </Link>
           </form>
         </div>
       </div>

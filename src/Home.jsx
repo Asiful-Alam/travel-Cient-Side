@@ -16,22 +16,22 @@ const Home = () => {
       <Banner />
       <div className="container mx-auto">
         <h1 className="text-3xl font-bold mt-10 mb-4 text-center">Add tourist spot</h1>
-        <div className="mt-10 ml-4">
+        <div className="mt-10 ml-4 p-4">
           <TouristSpot></TouristSpot>
         </div>
-        <div className="grid grid-cols-3  gap-6 mt-10 ">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {locations.map(location => (
-            <LocationCard key={location._id} location={location} />
+            <div key={location._id} className="flex justify-center">
+              <LocationCard location={location} />
+            </div>
           ))}
         </div>
         <div>
           <BookTour></BookTour>
         </div>
-      <AboutSection></AboutSection>
+        <AboutSection></AboutSection>
       </div>
-     
     </div>
-  
   );
 };
 

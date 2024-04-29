@@ -14,7 +14,7 @@ const AddTouristsSpot = () => {
     const form = e.target;
     const name = user?.displayName;
     const email = user?.email;
-
+  
     const tourists_spot_name = form.tourists_spot_name.value;
     const country_name = form.country_name.value;
     const location = form.location.value;
@@ -23,10 +23,12 @@ const AddTouristsSpot = () => {
     const seasonality = form.seasonality.value;
     const travel_time = form.travel_time.value;
     const total_visitors_per_year = form.total_visitors_per_year.value;
-
+    const image = form.spot_image.value; // Get the image URL from the input field
+  
     const AddformData = {
       name,
       email,
+      image,
       tourists_spot_name,
       country_name,
       location,
@@ -36,7 +38,7 @@ const AddTouristsSpot = () => {
       travel_time,
       total_visitors_per_year,
     };
-
+  
     fetch("http://localhost:5000/location", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -54,7 +56,7 @@ const AddTouristsSpot = () => {
         }
       });
   };
-
+  
   return (
     <div>
       <NavBar />
@@ -80,6 +82,17 @@ const AddTouristsSpot = () => {
               <label htmlFor="country_name" className="block mb-1">Country Name:</label>
               <input type="text" id="country_name" name="country_name" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
             </div>
+            <div>
+                <label htmlFor="spot_image" className="block mb-1">
+                  Spot Image URL:
+                </label>
+                <input
+                  type="text"
+                  id="spot_image"
+                  name="image"
+                  className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500"
+                />
+              </div>
             <div>
               <label htmlFor="location" className="block mb-1">Location:</label>
               <input type="text" id="location" name="location" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
