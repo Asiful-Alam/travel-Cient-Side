@@ -70,11 +70,13 @@ const router = createBrowserRouter([
       {
         path: '/countrydetails/:country_name',
         element:<CountryDetails></CountryDetails>,
-        
+        loader: ({params})=>fetch(`http://localhost:5000/location/country/${params.country_name}`)
+
       },
       {
-        path: '/viewcountryspot/:country_name',
+        path: '/viewcountryspot/:_id',
         element:<ViewCountrySpot></ViewCountrySpot>,
+        
         
       },
       {

@@ -76,9 +76,7 @@ const AboutUsSection = () => {
                         />
                     </div>
 
-                    <div className="flex justify-end mt-8">
-                        <a href="#" className="text-lg font-medium text-blue-600 hover:text-blue-700">Learn more</a>
-                    </div>
+                   
                 </div>
             </div>
         </div>

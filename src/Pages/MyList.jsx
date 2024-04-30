@@ -89,21 +89,7 @@ const MyList = () => {
         My Location List
       </h2>
 
-      {/* <div className="flex justify-center items-center">
-        <details className="dropdown">
-          <summary className="m-1 btn bg-transparent border-orange-400 text-[#333]">
-            Customization
-          </summary>
-          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-            <li onClick={() => handleFilter("yes")}>
-              <a>Yes</a>
-            </li>
-            <li onClick={() => handleFilter("no")}>
-              <a>No</a>
-            </li>
-          </ul>
-        </details>
-      </div> */}
+     
 
       <div className="container mx-auto">
         <div className="overflow-x-auto">

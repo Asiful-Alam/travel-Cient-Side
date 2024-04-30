@@ -9,12 +9,14 @@ const Update = () => {
   const { user } = useContext(AuthContext);
   const loadedLocation= useLoaderData();
   const {_id, email}=loadedLocation;
+  console.log(_id);
+
 
   const handleUpdate = (e) => {
     e.preventDefault();
     const form = e.target;
-    const name = user?.displayName;
-    const email = user?.email;
+    // const name = user?.displayName;
+    // const email = user?.email;
 
     const tourists_spot_name = form.tourists_spot_name.value;
     const country_name = form.country_name.value;
@@ -26,8 +28,8 @@ const Update = () => {
     const total_visitors_per_year = form.total_visitors_per_year.value;
 
     const updateItem = {
-      name,
-      email,
+      // name,
+      // email,
       tourists_spot_name,
       country_name,
       location,
