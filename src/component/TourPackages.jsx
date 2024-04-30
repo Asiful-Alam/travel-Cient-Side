@@ -17,8 +17,9 @@ const TourPackages = () => {
 
   return (
     <div className="container mx-auto ">
-      <h2 className="text-2xl font-semibold mb-4">Tour Packages</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <h2 className="text-2xl font-semibold mb-4 text-red-400 text-center mt-10">Tour Packages</h2>
+      <p className="text-gray-600 text-center font-xl ">Here you can book you next tour seats</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
         {packages.map((pkg) => (
           <div key={pkg.id} className="border border-gray-200 rounded-lg p-4">
             <div className="flex justify-between items-center mb-2 ">

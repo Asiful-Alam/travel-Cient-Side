@@ -14,7 +14,7 @@ const Footer = () => {
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-gray-400">Home</a></li>
                 <li><a href="#" className="hover:text-gray-400">About Us</a></li>
-                <li><a href="#" className="hover:text-gray-400">Properties</a></li>
+                <li><a href="#" className="hover:text-gray-400">places</a></li>
                 <li><a href="#" className="hover:text-gray-400">Contact</a></li>
               </ul>
             </div>
@@ -24,7 +24,7 @@ const Footer = () => {
               <div className="flex items-center space-x-4">
                 <img src="https://via.placeholder.com/100" alt="Property" className="w-16 h-16 object-cover rounded-lg" />
                 <div>
-                  <h4 className="font-semibold">AshTek</h4>
+                  <h4 className="font-semibold">Ash Travels</h4>
                   <p>$1,000,000</p>
                 </div>
               </div>
@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="border-t border-gray-700 mt-8 pt-6 text-sm text-center">
-            <p>&copy; {new Date().getFullYear()} Your Real Estate Company. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Your Tour planner Company. All rights reserved.</p>
             <div className="flex justify-center space-x-4 mt-4">
               <a href="#" className="text-gray-400 hover:text-gray-300 transition duration-300">
                 Privacy Policy

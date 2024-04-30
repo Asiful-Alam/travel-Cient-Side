@@ -77,7 +77,7 @@ const NavBar = () => {
 
   return (
     <div className="navbar my-8 z-10 relative">
-      <p className="text-2xl font-bold">Asif Travel</p>
+      <p className="text-2xl gap-2 font-bold"><span>Asif </span><span className="text-red-500"> Travel</span></p>
       <div className="ml-32">
       <label className="swap swap-rotate">
         <input onClick={toggleTheme} type="checkbox" />
