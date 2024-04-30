@@ -2,7 +2,7 @@ import  { useContext } from "react";
 import NavBar from "../component/NavBar";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Link, useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
 
 
 const Update = () => {
@@ -57,6 +57,7 @@ const Update = () => {
               })
         })
   };
+  
 
   return (
     <div>
@@ -126,11 +127,11 @@ const Update = () => {
               <input type="text" id="total_visitors_per_year" name="total_visitors_per_year" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
             </div>
             {/* Submit button */}
-           <Link to={`/update/${location._id}`}>
-           <button className="btn  btn-primary">
+          
+           <button type="submit" className="btn  btn-primary">
             update
            </button>
-           </Link>
+           {/* </Link> */}
           </form>
         </div>
       </div>

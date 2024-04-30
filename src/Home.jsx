@@ -12,7 +12,7 @@ import PhotographyGalleries from './component/PhotographyGalleries ';
 
 const Home = () => {
   const locations = useLoaderData();
-
+  console.log(locations);
   return (
     <div className="mx-auto">
       <NavBar />

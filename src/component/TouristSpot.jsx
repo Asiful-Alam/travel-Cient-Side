@@ -12,7 +12,7 @@ const TouristSpot = () => {
         setCategories(data);
       });
   }, []);
-
+  console.log('pb data',categories)
   return (
     <div className="container mx-auto">
       <h2 className="text-2xl md:text-4xl text-orange-500 font-lato font-bold text-center mb-6">

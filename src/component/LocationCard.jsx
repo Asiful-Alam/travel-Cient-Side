@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const LocationCard = ({ location }) => {
+  
   return (
     <div className="max-w-lg mx-auto mb-6">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden h-full">
