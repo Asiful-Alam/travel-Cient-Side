@@ -8,7 +8,7 @@ import { Link, useLoaderData } from "react-router-dom";
 const Update = () => {
   const { user } = useContext(AuthContext);
   const loadedLocation= useLoaderData();
-  const {_id, email}=loadedLocation;
+  const {_id}=loadedLocation;
   console.log(_id);
 
 
@@ -41,7 +41,7 @@ const Update = () => {
     };
 
     console.log(updateItem);
-    fetch(`http://localhost:5000/location/${email}/${_id}`,{
+    fetch(`http://localhost:5000/location/${_id}`,{
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(updateItem)
