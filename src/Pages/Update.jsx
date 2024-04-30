@@ -64,7 +64,7 @@ const Update = () => {
       <div className="max-w-md mx-auto mt-8 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-8 rounded-lg">
         <div className="bg-white shadow-md rounded px-8 py-6">
           <h2 className="text-2xl font-semibold mb-4 text-center">
-            Update Tourist Spot
+           Update your tourist spot
           </h2>
           <form className="space-y-4" onSubmit={handleUpdate}>
             <div>
@@ -126,7 +126,6 @@ const Update = () => {
               <input type="text" id="total_visitors_per_year" name="total_visitors_per_year" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:border-blue-500" />
             </div>
             {/* Submit button */}
-            
            <Link to={`/update/${location._id}`}>
            <button className="btn  btn-primary">
             update

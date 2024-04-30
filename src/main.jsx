@@ -76,8 +76,6 @@ const router = createBrowserRouter([
       {
         path: '/viewcountryspot/:_id',
         element:<ViewCountrySpot></ViewCountrySpot>,
-        
-        
       },
       {
         path: '/bookingsystem',
@@ -89,8 +87,7 @@ const router = createBrowserRouter([
         path: '/update/:id',
         element: 
           <Update></Update>,
-        loader:({params})=> fetch(`http://localhost:5000/location/${params.id}`)
-        
+        loader:({params})=> fetch(`http://localhost:5000/location/${params.email}/${params.id}`)
       },
     ],
   },
