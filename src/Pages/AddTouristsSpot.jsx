@@ -40,7 +40,7 @@ const AddTouristsSpot = () => {
     };
     console.log(AddformData);
   
-    fetch("http://localhost:5000/location", {
+    fetch("https://travel-taupe-omega.vercel.app/location", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(AddformData),

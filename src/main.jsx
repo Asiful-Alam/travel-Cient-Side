@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
+        loader: () => fetch('https://travel-taupe-omega.vercel.app/location').then(res => res.json()),
       },
       {
         path: '/location',
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         path: '/spot',
         element: 
           <TouristsSpot></TouristsSpot>,
-        loader: () => fetch('http://localhost:5000/location').then(res => res.json()),
+        loader: () => fetch('https://travel-taupe-omega.vercel.app/location').then(res => res.json()),
       },
       {
         path: '/mylist',
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: '/countrydetails/:country_name',
         element:<CountryDetails></CountryDetails>,
-        // loader: ({params})=>fetch(`http://localhost:5000/location/country/${params.country_name}`)
+        // loader: ({params})=>fetch(`https://travel-taupe-omega.vercel.app/location/country/${params.country_name}`)
       },
       {
         path: '/viewcountryspot/:_id',
@@ -86,7 +86,7 @@ const router = createBrowserRouter([
         path: '/update/:id',
         element: 
           <Update></Update>,
-        loader:({params})=> fetch(`http://localhost:5000/location/${params.email}/${params.id}`)
+        loader:({params})=> fetch(`https://travel-taupe-omega.vercel.app/location/${params.email}/${params.id}`)
       },
     ],
   },

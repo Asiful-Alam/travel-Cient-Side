@@ -11,7 +11,7 @@ const CountryDetails = () => {
     
     
     useEffect(() => {
-        fetch("http://localhost:5000/countries/"+country_name)
+        fetch("https://travel-taupe-omega.vercel.app/countries/"+country_name)
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);

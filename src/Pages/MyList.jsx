@@ -23,7 +23,7 @@ const MyList = () => {
     const fetchLocations = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/location/${user?.email}`
+          `https://travel-taupe-omega.vercel.app/location/${user?.email}`
         );
         if (response.ok) {
           const data = await response.json();
@@ -52,7 +52,7 @@ const MyList = () => {
     });
     if (result.isConfirmed) {
       try {
-        const response = await fetch(`http://localhost:5000/location/${_id}`, {
+        const response = await fetch(`https://travel-taupe-omega.vercel.app/location/${_id}`, {
           method: 'DELETE'
         });
         if (response.ok) {

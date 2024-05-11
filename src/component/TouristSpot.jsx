@@ -5,7 +5,7 @@ const TouristSpot = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/countries")
+    fetch("https://travel-taupe-omega.vercel.app/countries")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

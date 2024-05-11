@@ -41,7 +41,7 @@ const Update = () => {
     };
 
     console.log(updateItem);
-    fetch(`http://localhost:5000/location/${_id}`,{
+    fetch(`https://travel-taupe-omega.vercel.app/location/${_id}`,{
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(updateItem)
